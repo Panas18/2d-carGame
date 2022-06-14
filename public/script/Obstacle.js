@@ -1,14 +1,11 @@
 class Obstacle {
-  constructor(lane) {
-    this.spawnLane = lane;
-    // this.spawnLane = genRandom(3, 0);
-    this.currentX = this.spawnLane * 200 + 65;
-    this.ismoving = false;
-  }
-
-  create() {
+  constructor() {
+    // this.spawnLane = lane;
     this.car = document.createElement("div");
     road.appendChild(this.car);
+    this.spawnLane = genRandom(3, 0);
+    this.currentX = this.spawnLane * 200 + 65;
+    this.ismoving = false;
     this.car.style.position = "absolute";
     this.car.style.width = 70 + "px";
     this.car.style.height = 130 + "px";
@@ -16,19 +13,15 @@ class Obstacle {
     this.car.style.backgroundImage = "url('./images/obstacle.png')";
     this.car.style.backgroundSize = "70px 130px";
     this.car.style.backgroundRepeat = "no-repeat";
-    this.car.style.top = `-150px`;
+    this.car.style.top = -150 + "px";
   }
 
   move() {
-    this.ismoving = true;
     this.currentY = this.car.offsetTop;
     this.currentY += 3;
     this.car.style.top = `${this.currentY}px`;
-  }
-
-  stop() {
-    this.ismoving = false;
+    if (this.currentY >= 615) {
+      this.car.style.top = "-150px";
+    }
   }
 }
-
-//generate random 3 obstacles
