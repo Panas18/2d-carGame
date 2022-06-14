@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0
+}
+
+.game-container {
+  width: 600px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+
+.road {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/road.jpg");
+  background-repeat: repeat-y;
+  animation: animateBackground 3s linear infinite;
+  /* overflow: hidden; */
+  z-index: -4;
+}
+
+
+@keyframes animateBackground {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0, 10vh;
+  }
+}
+
+.player {
+  position: absolute;
+  transform: rotate(90deg);
+  width: 150px;
+  height: 60px;
+  z-index: 4;
+  bottom: 25px;
+  left:20px;
+}
+
+.player img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
