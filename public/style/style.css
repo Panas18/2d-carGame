@@ -16,8 +16,8 @@
   height: 100%;
   background-image: url("../images/road.jpg");
   background-repeat: repeat-y;
-  animation: animateBackground 3s linear infinite;
-  /* overflow: hidden; */
+  animation: animateBackground 1s linear infinite;
+  overflow: hidden;
   z-index: -4;
 }
 
@@ -33,17 +33,6 @@
 }
 
 .player {
-  position: absolute;
-  transform: rotate(90deg);
-  width: 150px;
-  height: 60px;
   z-index: 4;
   bottom: 25px;
-  left:20px;
-}
-
-.player img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }

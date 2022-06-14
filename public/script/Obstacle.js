@@ -1,32 +1,34 @@
 class Obstacle {
   constructor(lane) {
     this.spawnLane = lane;
+    // this.spawnLane = genRandom(3, 0);
     this.currentX = this.spawnLane * 200 + 65;
-    this.move = false;
-
-    // moves the car
-    if (this.move) {
-      setInterval(() => {
-        this.currentY += 1;
-        this.car.style.top = `${this.currentY}px`;
-      }, 1000 / 60);
-    }
+    this.ismoving = false;
   }
 
   create() {
     this.car = document.createElement("div");
     road.appendChild(this.car);
     this.car.style.position = "absolute";
-		this.car.style.top = `${-this.car.style.width}px`
-    this.car.style.width = 60 + "px";
-    this.car.style.height = 150 + "px";
-    this.car.style.border = "1px solid red";
+    this.car.style.width = 70 + "px";
+    this.car.style.height = 130 + "px";
     this.car.style.left = `${this.currentX}px`;
-		console.log(this.car.style.top)
+    this.car.style.backgroundImage = "url('./images/obstacle.png')";
+    this.car.style.backgroundSize = "70px 130px";
+    this.car.style.backgroundRepeat = "no-repeat";
+    this.car.style.top = `-150px`;
+  }
+
+  move() {
+    this.ismoving = true;
+    this.currentY = this.car.offsetTop;
+    this.currentY += 3;
+    this.car.style.top = `${this.currentY}px`;
+  }
+
+  stop() {
+    this.ismoving = false;
   }
 }
 
-car1 = new Obstacle((lane = 1));
-car1.create()
-car2 = new Obstacle((lane = 2));
-car3 = new Obstacle((lane = 3));
+//generate random 3 obstacles
