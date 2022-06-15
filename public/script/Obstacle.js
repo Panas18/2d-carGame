@@ -20,8 +20,5 @@ class Obstacle {
     this.currentY = this.car.offsetTop;
     this.currentY += 3;
     this.car.style.top = `${this.currentY}px`;
-    if (this.currentY >= 615) {
-      this.car.style.top = "-150px";
-    }
   }
 }
