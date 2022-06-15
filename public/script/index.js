@@ -2,6 +2,7 @@ startBtn.addEventListener("click", (e) => {
   startScreen.style.display = "none";
   road.style.display = "block";
   restartScreen.style.display = "none";
+  scoreContainer.style.display = "block";
 });
 restartBtn.addEventListener("click", (e) => {
   startScreen.style.display = "none";
@@ -37,8 +38,10 @@ setInterval(() => {
 
 setInterval(() => {
   for (i = 1; i <= obsList.length; i++) {
+    scoreValue.innerHTML = `${score}`;
+    console.log(score)
     obsList[i].move();
-    removeObstacle(obsList);
+    removeObstacle(obsList[i]);
     // detectCollision(obsList[i]);
   }
 }, 1000 / 60);
@@ -49,9 +52,11 @@ function restart() {
   restartScreen.style.display = "block";
 }
 
-function removeObstacle(obsList) {
-  if (obsList.length >= 6)
-    for (i = 0; i < 3; i++) {
-      obsList.shift();
-    }
+function removeObstacle(obs) {
+  if (obs.currentY >= 615) {
+    obsList.shift();
+    score += 1
+  }
 }
+
+// function updateScore() {}

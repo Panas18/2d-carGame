@@ -47,12 +47,12 @@
   color: white;
 }
 
-.start-screen{
+.start-screen {
   /* display:none */
 }
 
 
-.card-heading{
+.card-heading {
   font-size: 56px;
   margin-top: 200px;
 }
@@ -80,6 +80,17 @@
 }
 
 
-.end-screen{
+.end-screen {
   display: none;
+}
+
+.score {
+  position: absolute;
+  z-index: 5;
+  color: black;
+  font-size: 40px;
+  top:0;
+  right:200px;
+  display: none;
+
 }
