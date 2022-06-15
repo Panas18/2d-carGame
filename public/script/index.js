@@ -10,8 +10,6 @@ restartBtn.addEventListener("click", (e) => {
   restartScreen.style.display = "none";
 });
 
-var player = new Player();
-
 document.addEventListener("keyup", (e) => {
   if (e.key == "ArrowRight") {
     player.moveRight();
@@ -35,20 +33,6 @@ function removeObstacle(obs) {
 }
 scoreValue.innerHTML = `${score}`;
 
-let obsList = [];
-setInterval(() => {
-  obsList.push(new Obstacle());
-}, 2500);
-setInterval(() => {
-  for (i = 1; i <= obsList.length - 1; i++) {
-    scoreValue.innerHTML = `${score}`;
-    obsList[i].move();
-    removeObstacle(obsList[i]);
-    let collision = detectCollision(obsList[i]);
-    if (collision) restart();
-  }
-}, 1000 / 60);
-
 function detectCollision(obstacle) {
   if (
     player.currentX + width >= obstacle.currentX &&
@@ -59,3 +43,18 @@ function detectCollision(obstacle) {
     return true;
   }
 }
+
+let player = new Player();
+let obsList = [];
+setInterval(() => {
+  obsList.push(new Obstacle());
+}, 2000);
+setInterval(() => {
+  for (i = 1; i <= obsList.length - 1; i++) {
+    scoreValue.innerHTML = `${score}`;
+    obsList[i].move();
+    removeObstacle(obsList[i]);
+    let collision = detectCollision(obsList[i]);
+    if (collision) restart();
+  }
+}, 1000 / 60);
