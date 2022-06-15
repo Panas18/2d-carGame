@@ -6,12 +6,13 @@ class Player {
     this.lane = 0;
     this.moveFrame = 1;
     this.car.style.position = "absolute";
-    this.car.style.width = 70 + "px";
-    this.car.style.height = 130 + "px";
+    this.car.style.width = width + "px";
+    this.car.style.height = height + "px";
     this.car.style.backgroundImage = "url('./images/player.png')";
     this.car.style.backgroundSize = "70px 130px";
     this.car.style.backgroundRepeat = "no-repeat";
     this.car.style.top = "480px";
+    this.currentY = 480;
   }
   moveRight() {
     if (this.lane != LANES - 1) {

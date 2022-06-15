@@ -7,8 +7,8 @@ class Obstacle {
     this.currentX = this.spawnLane * 200 + 65;
     this.ismoving = false;
     this.car.style.position = "absolute";
-    this.car.style.width = 70 + "px";
-    this.car.style.height = 130 + "px";
+    this.car.style.width = width + "px";
+    this.car.style.height = height+ "px";
     this.car.style.left = `${this.currentX}px`;
     this.car.style.backgroundImage = "url('./images/obstacle.png')";
     this.car.style.backgroundSize = "70px 130px";

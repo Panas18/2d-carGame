@@ -20,43 +20,42 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
-function detectCollision(obstacle) {
-  let obstaclePosn = obstacle.currentY + 130;
-  // console.log(obstaclePosn);
-  if (player.lane === obstacle.spawnLane) {
-    if (obstaclePosn >= 485) {
-      restart();
-    }
-  }
-}
-
-let obsList = [];
-
-setInterval(() => {
-  obsList.push(new Obstacle());
-}, 2500);
-
-setInterval(() => {
-  for (i = 1; i <= obsList.length; i++) {
-    scoreValue.innerHTML = `${score}`;
-    console.log(score)
-    obsList[i].move();
-    removeObstacle(obsList[i]);
-    // detectCollision(obsList[i]);
-  }
-}, 1000 / 60);
-
 function restart() {
   startScreen.style.display = "none";
   road.style.display = "none";
   restartScreen.style.display = "block";
+  endScore.innerHTML = `${score}`;
 }
 
 function removeObstacle(obs) {
   if (obs.currentY >= 615) {
     obsList.shift();
-    score += 1
+    score += 1;
   }
 }
+scoreValue.innerHTML = `${score}`;
 
-// function updateScore() {}
+let obsList = [];
+setInterval(() => {
+  obsList.push(new Obstacle());
+}, 2500);
+setInterval(() => {
+  for (i = 1; i <= obsList.length - 1; i++) {
+    scoreValue.innerHTML = `${score}`;
+    obsList[i].move();
+    removeObstacle(obsList[i]);
+    let collision = detectCollision(obsList[i]);
+    if (collision) restart();
+  }
+}, 1000 / 60);
+
+function detectCollision(obstacle) {
+  if (
+    player.currentX + width >= obstacle.currentX &&
+    player.currentX <= obstacle.currentX + width &&
+    player.currentY + height >= obstacle.currentY &&
+    player.currentY <= obstacle.currentY + height
+  ) {
+    return true;
+  }
+}
