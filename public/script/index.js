@@ -23,6 +23,7 @@ function restart() {
   road.style.display = "none";
   restartScreen.style.display = "block";
   endScore.innerHTML = `${score}`;
+  scoreContainer.style.display = "none"
 }
 
 function removeObstacle(obs) {
